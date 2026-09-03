@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inclusão em Sala</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#21334b;--muted:#67778d;--line:#e6edf2;--paper:#fffdfa;--teal:#317f7b;--teal-soft:#e8f6f2;--purple:#7462a6;--purple-soft:#f0edfb;--sun:#f4bc52;--sun-soft:#fff7df;--coral:#df7866;--bg:#f6f9f9;--shadow:0 12px 32px rgba(42,66,84,.09)}
+    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:15px} button,input{font:inherit} button{cursor:pointer;border:0}.topbar{height:72px;background:rgba(255,253,250,.92);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:space-between;padding:0 6.4vw;border-bottom:1px solid #edf1f1;position:sticky;top:0;z-index:10}.brand{display:flex;align-items:center;gap:11px;font-family:Nunito,sans-serif;font-weight:900;font-size:20px;color:#26454d}.logo{width:34px;height:34px;display:grid;place-items:center;background:var(--teal);border-radius:12px;color:white;font-size:19px;box-shadow:0 5px 12px #317f7b3d}.nav{display:flex;gap:24px;align-items:center}.nav button{background:transparent;color:#53647a;font-weight:600}.nav button:hover{color:var(--teal)}.font-btn{border:1px solid var(--line)!important;padding:8px 10px;border-radius:9px!important;color:var(--ink)!important}.screen{display:none}.screen.active{display:block}.screen.app-shell.active{display:grid}body.app-mode .topbar{display:none}.landing{overflow:hidden}.hero{min-height:570px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:44px;max-width:1180px;margin:auto;padding:74px 28px 62px}.eyebrow{color:var(--teal);font-weight:800;letter-spacing:.05em;text-transform:uppercase;font-size:12px;display:flex;align-items:center;gap:8px}.eyebrow:before{content:'';width:24px;height:2px;background:var(--sun)}h1,h2,h3{font-family:Nunito,sans-serif;margin:0}h1{font-size:clamp(39px,5vw,63px);line-height:1.04;letter-spacing:-1.8px;margin:14px 0 21px;max-width:650px}.highlight{color:var(--teal);position:relative;white-space:nowrap}.highlight:after{content:'';position:absolute;left:2px;right:0;bottom:-3px;height:8px;background:#f8da91a8;border-radius:9px;z-index:-1}.hero p{font-size:18px;line-height:1.6;color:var(--muted);max-width:560px;margin:0}.access-row{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0}.access{padding:13px 17px;border-radius:12px;font-weight:800;box-shadow:0 5px 12px rgba(33,51,75,.07)}.access.primary{background:var(--teal);color:white}.access.purple{background:var(--purple-soft);color:#60508d}.access.outline{background:white;border:1px solid var(--line);color:#526377}.privacy{font-size:12px;color:#77869a;display:flex;gap:7px;align-items:flex-start}.privacy b{color:#4e6e70}.illustration{position:relative;height:440px}.blob{position:absolute;width:360px;height:360px;border-radius:50% 42% 53% 42%;background:#e3f3ee;top:35px;left:50%;transform:translateX(-50%) rotate(13deg)}.desk{position:absolute;bottom:24px;left:30px;right:15px;height:136px;background:#fffefa;border-radius:18px;box-shadow:var(--shadow);border:1px solid #edf1ec}.desk:before{content:'';position:absolute;left:34px;right:34px;bottom:18px;height:10px;border-radius:20px;background:#e6d6bb}.card-art{position:absolute;background:#fffefa;border-radius:18px;padding:16px;box-shadow:var(--shadow);border:1px solid #e9f0ed}.card-art strong{font-family:Nunito;font-size:14px;display:block}.progress{height:9px;background:#e7efed;border-radius:10px;margin-top:11px;overflow:hidden}.progress i{display:block;height:100%;border-radius:10px;background:var(--teal)}.routine-card{left:20px;top:35px;width:205px;transform:rotate(-4deg)}.routine-card .mini-row{display:flex;gap:8px;align-items:center;margin-top:9px;color:#68758a;font-size:12px}.mini-icon{width:25px;height:25px;border-radius:8px;background:var(--sun-soft);display:grid;place-items:center}.student-art{position:absolute;right:22px;top:70px;width:180px;background:#7d68a9;color:white;transform:rotate(5deg);padding-top:21px}.student-art p{font-size:12px;color:#ede9ff;margin:5px 0}.avatar-stack{display:flex;margin-top:15px}.avatar-stack span{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#f8cf88;color:#6b477c;border:2px solid #7d68a9;margin-right:-8px;font-size:15px}.note-art{right:0;bottom:46px;width:180px;background:#fff7df;transform:rotate(-2deg)}.note-art small{color:#836d38}.wave{height:80px;margin-top:-1px;background:var(--paper);border-radius:50% 50% 0 0/35% 35% 0 0}.needs{background:var(--paper);padding:30px 6.4vw 82px}.section-head{display:flex;justify-content:space-between;align-items:end;max-width:1180px;margin:0 auto 27px;gap:20px}.section-head h2{font-size:30px;letter-spacing:-.6px}.section-head p{margin:5px 0 0;color:var(--muted)}.arrows{display:flex;gap:8px}.round{width:37px;height:37px;border-radius:50%;background:#fff;border:1px solid var(--line);color:var(--teal);font-size:20px}.need-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;max-width:1180px;margin:auto}.need{border:1px solid var(--line);border-radius:17px;padding:20px;background:white;min-height:234px;display:flex;flex-direction:column;transition:.2s}.need:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.need-icon{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;font-size:21px}.need:nth-child(1) .need-icon{background:#e9f6f2}.need:nth-child(2) .need-icon{background:#f0edfb}.need:nth-child(3) .need-icon{background:#fff4db}.need:nth-child(4) .need-icon{background:#feebea}.need h3{font-size:19px;margin:13px 0 7px}.need p{font-size:13px;line-height:1.45;color:var(--muted);margin:0}.need button{margin-top:auto;background:transparent;color:var(--teal);font-weight:800;padding:14px 0 0;text-align:left}.need button span{font-size:17px;margin-left:4px}.note{max-width:1180px;margin:25px auto 0;padding:15px 18px;border-radius:12px;background:#f4f7f7;color:#637382;font-size:13px}.note b{color:#456667}.footer{padding:28px 6.4vw;background:#26454d;color:#d8e5e4;display:flex;justify-content:space-between;font-size:13px}
+    /* app shell */ .app-shell{min-height:100vh;grid-template-columns:244px 1fr;background:#f7faf9}.sidebar{background:#fffdfa;border-right:1px solid var(--line);padding:25px 15px;position:fixed;inset:0 auto 0 0;width:244px;z-index:3}.sidebar .brand{padding:0 9px;margin-bottom:36px}.profile-tag{margin:0 9px 20px;padding:10px 12px;border-radius:12px;background:var(--teal-soft);color:var(--teal);font-size:12px;font-weight:800}.menu{display:grid;gap:4px}.menu button{background:transparent;border-radius:10px;padding:12px 13px;text-align:left;color:#627187;font-weight:600}.menu button.active,.menu button:hover{background:#eef7f4;color:var(--teal);font-weight:800}.menu button span{font-size:18px;display:inline-block;width:28px}.sidebar-bottom{position:absolute;bottom:24px;left:24px;right:24px;color:#657689;font-size:12px}.sidebar-bottom button{margin-top:10px;width:100%;padding:10px;background:#f1f5f4;border-radius:9px;color:#516577;font-weight:bold}.app-main{grid-column:2;padding:27px 4.5vw 55px;max-width:1450px;width:100%}.app-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}.greeting small{color:var(--muted);font-weight:600}.greeting h1{font-size:30px;letter-spacing:-.5px;margin:2px 0}.user-actions{display:flex;align-items:center;gap:12px}.bell{height:38px;width:38px;border-radius:10px;border:1px solid var(--line);background:#fff;font-size:17px}.user{display:flex;align-items:center;gap:8px;font-weight:800}.avatar{height:36px;width:36px;border-radius:50%;background:#fbcc86;display:grid;place-items:center;font-size:18px}.dashboard{display:grid;grid-template-columns:1.42fr .9fr;gap:20px}.panel{background:white;border:1px solid var(--line);border-radius:17px;padding:21px}.panel h2{font-size:19px}.panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}.link{background:none;color:var(--teal);font-weight:800}.search-box{border-radius:15px;background:linear-gradient(113deg,#e7f5f1,#f2f0fc);padding:22px;margin-bottom:20px}.search-box h2{font-size:22px}.search-box p{color:#637385;margin:6px 0 14px;font-size:13px}.search-input{background:white;border:1px solid #dce7e4;border-radius:10px;padding:4px;display:flex}.search-input input{border:0;outline:0;padding:10px;flex:1;background:transparent;color:var(--ink)}.search-input button{border-radius:8px;padding:10px 15px;background:var(--teal);color:white;font-weight:800}.quick-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.quick{padding:14px;border:1px solid var(--line);border-radius:12px;background:white;text-align:left;color:#526378;font-size:13px;font-weight:700}.quick b{display:block;font-size:20px;margin-bottom:6px}.student-list{display:grid;gap:9px}.student{display:flex;align-items:center;gap:10px;padding:8px;border-radius:10px}.student:hover{background:#f5f9f8}.student .avatar{flex:0 0 38px}.student-info{flex:1}.student-info b{font-size:14px;display:block}.student-info small{color:var(--muted)}.tag{font-size:11px;font-weight:800;padding:5px 7px;border-radius:7px;background:var(--purple-soft);color:#65568e}.go{color:#a7b4bd;font-size:20px}.goals{display:grid;gap:12px}.goal{padding:13px;border-radius:12px;background:#f8fbfa}.goal-head{display:flex;justify-content:space-between;gap:8px;font-size:13px;font-weight:800}.goal small{color:var(--muted);display:block;margin:4px 0 8px}.goal .progress{height:7px}.goal .progress i{background:var(--purple)}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;font-size:12px;color:#718096}.calendar b{padding:6px 0;color:#536376}.calendar span{padding:6px 0}.calendar .today{background:var(--teal);color:#fff;border-radius:7px;font-weight:bold}.records{grid-column:1/2}.record{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #eef2f2}.record:last-child{border:0}.mood{width:38px;height:38px;border-radius:10px;background:#fff6de;display:grid;place-items:center;font-size:19px;flex-shrink:0}.record b{font-size:14px}.record p{margin:3px 0 0;color:#66758a;font-size:12px;line-height:1.45}.strategy-result{margin-top:16px;padding:17px;background:white;border:1px solid #dbe9e5;border-radius:12px;display:none}.strategy-result.show{display:block}.strategy-result h3{font-size:17px}.strategy-result p{color:#617186;font-size:13px;line-height:1.45}.strategy-result .result-actions{display:flex;gap:8px;margin-top:10px}.small-btn{padding:8px 10px;border-radius:8px;color:var(--teal);background:#e9f6f2;font-size:12px;font-weight:800}.small-btn.alt{color:#66558f;background:#f0edfb}
+    .parent-hero{background:linear-gradient(120deg,#e9f6f2,#f4f1fb);border-radius:18px;padding:25px;display:flex;justify-content:space-between;gap:20px;align-items:center}.parent-hero h1{font-size:29px;margin:0 0 6px}.parent-hero p{margin:0;line-height:1.5;color:#53677b;max-width:700px}.child-pill{padding:12px 15px;border-radius:12px;background:white;box-shadow:0 4px 13px #5e77801c;white-space:nowrap;font-weight:800}.child-pill span{color:var(--teal)}.timeline{position:relative;padding-left:24px}.timeline:before{content:'';position:absolute;top:4px;bottom:4px;left:6px;width:2px;background:#dcece8}.event{position:relative;padding:0 0 17px}.event:before{content:'';position:absolute;left:-22px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--teal);border:3px solid #ddf1eb}.event b{font-size:13px}.event p{font-size:12px;line-height:1.5;color:#6c7a8d;margin:3px 0}.victory{background:#fff8e5!important;border-color:#f8e6ae!important}.victory .award{font-size:34px}.school-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat{padding:18px;border-radius:14px;background:#fff;border:1px solid var(--line)}.stat strong{font-family:Nunito;font-size:27px;display:block}.stat small{color:var(--muted)}
+    .hidden{display:none!important}
+    .form-card{background:#f8fbfa;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:16px}
+    .form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:10px}
+    .form-grid label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:700;color:#516577}
+    .form-grid input,.form-grid select,textarea{border:1px solid var(--line);border-radius:8px;padding:9px 10px;background:#fff;color:var(--ink);font:inherit;width:100%}
+    textarea{min-height:64px;resize:vertical;margin-bottom:10px;display:block}
+    .checkbox-row{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:#516577;margin-bottom:8px}
+    .checkbox-row input{width:auto}
+    .form-actions{display:flex;gap:8px}
+    .btn{padding:10px 15px;border-radius:9px;font-weight:800;background:var(--teal);color:#fff}
+    .btn.ghost{background:#eef4f3;color:var(--teal)}
+    .list-row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid #eef2f2;flex-wrap:wrap}
+    .list-row:last-child{border:0}
+    .list-row .grow{flex:1;min-width:200px}
+    .list-row b{font-size:14px}
+    .list-row small{color:var(--muted);display:block;margin-top:2px}
+    .pill-actions{display:flex;gap:6px;flex-shrink:0}
+    .mini-btn{padding:6px 10px;border-radius:7px;background:#f1f5f4;color:#516577;font-weight:700;font-size:12px;white-space:nowrap}
+    .mini-btn.danger{background:#feecea;color:#b1483a}
+    .mini-btn.on{background:var(--teal-soft);color:var(--teal)}
+    .badge-ok{font-size:11px;font-weight:800;padding:4px 8px;border-radius:7px;background:#e9f6f2;color:var(--teal);white-space:nowrap}
+    .badge-warn{font-size:11px;font-weight:800;padding:4px 8px;border-radius:7px;background:#fff4db;color:#8a6720;white-space:nowrap}
+    .empty-state{color:var(--muted);font-size:13px;padding:16px 0;text-align:center}
+    .section-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px;flex-wrap:wrap}
+    .section-toolbar h2{font-size:20px}
+    .goal-controls{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+    .plano-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+    .plano-card{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fcfefd;display:flex;flex-direction:column;gap:8px}
+    .plano-card h3{font-size:16px;margin:0}
+    .plano-card p{font-size:13px;color:var(--muted);margin:0;line-height:1.5}
+    .plano-detalhes{font-size:13px;color:#617186;line-height:1.6}
+    .plano-detalhes b{display:block;margin-top:8px;color:#425163}
+    .plano-detalhes ul{margin:4px 0 0;padding-left:18px}
+    .plano-atribuir{display:flex;gap:6px;margin-top:auto;padding-top:6px;flex-wrap:wrap}
+    .plano-atribuir select{border:1px solid var(--line);border-radius:8px;padding:8px 10px;flex:1;min-width:120px}
+    .home-activity{border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px;background:#fcfefd}
+    .home-activity h3{font-size:15px;margin:6px 0 4px}
+    .home-activity ul{margin:6px 0 0;padding-left:18px;font-size:13px;color:#53677b;line-height:1.6}
+    @media(max-width:900px){.need-grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr;padding-top:54px}.illustration{height:330px;max-width:500px;width:100%;margin:auto}.sidebar{width:72px;padding:20px 10px}.sidebar .brand{padding:0;justify-content:center}.sidebar .brand>span,.profile-tag,.menu button:not(.active)::after,.menu button{font-size:0}.menu button{padding:13px;text-align:center}.menu button span{font-size:20px;width:auto}.sidebar-bottom{display:none}.app-main{grid-column:2;padding:24px}.dashboard{grid-template-columns:1fr}.records{grid-column:auto}.nav{display:none}}
+    @media(max-width:590px){.topbar{padding:0 20px}.topbar .brand span{font-size:17px}.topbar .nav{display:flex;gap:5px}.topbar .nav button:not(.font-btn){display:none}.hero{padding:43px 20px 20px;gap:12px}.hero p{font-size:16px}.access-row{display:grid}.access{width:100%}.illustration{transform:scale(.83);transform-origin:top center;margin-bottom:-48px}.needs{padding:25px 20px 56px}.section-head{align-items:start}.section-head h2{font-size:26px}.arrows{display:none}.need-grid{grid-template-columns:1fr}.need{min-height:190px}.footer{padding:23px 20px;display:block}.footer span{display:block;margin-bottom:8px}.app-shell{grid-template-columns:1fr}.sidebar{position:fixed;top:auto;right:0;bottom:0;left:0;height:66px;width:auto;display:flex;padding:7px 7px;background:#fffdfa;border-top:1px solid var(--line);border-right:0}.sidebar .brand,.profile-tag,.sidebar-bottom{display:none}.menu{display:flex;width:100%;justify-content:space-around}.menu button{padding:9px;flex:1}.menu button span{display:block;margin:auto}.app-main{grid-column:1;padding:19px 15px 83px}.app-top{margin-bottom:18px}.greeting h1{font-size:23px}.user{font-size:0}.dashboard{gap:14px}.panel{padding:16px}.quick-actions{grid-template-columns:1fr 1fr}.search-box{padding:17px}.parent-hero{display:block;padding:19px}.parent-hero h1{font-size:23px}.child-pill{display:inline-block;margin-top:16px}.school-stats{grid-template-columns:1fr}.user-actions .bell{display:none}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">✦</span><span>Inclusão em Sala</span></div>
+    <nav class="nav"><button onclick="showScreen('home')">Início</button><button onclick="document.getElementById('necessidades').scrollIntoView({behavior:'smooth'})">Necessidades</button><button class="font-btn" onclick="toggleFont()">A<span style="font-size:12px">+</span></button></nav>
+  </header>
+
+  <main id="home" class="screen landing active">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Educação que acolhe</div>
+        <h1>Todo aluno aprende. <span class="highlight">Cada um do seu jeito.</span></h1>
+        <p>Estratégias, acompanhamento e parceria para uma educação mais inclusiva — com informação pedagógica, respeito e cuidado.</p>
+        <div class="access-row">
+          <button class="access primary" onclick="showScreen('teacher')">Sou professor(a) →</button>
+          <button class="access purple" onclick="showScreen('parent')">Sou pai ou responsável</button>
+          <button class="access outline" onclick="showScreen('school')">Acesso da escola</button>
+        </div>
+        <div class="privacy">🔒 <span><b>Seu cuidado fica protegido.</b> Informações usadas apenas para o acompanhamento pedagógico, em conformidade com a LGPD.</span></div>
+      </div>
+      <div class="illustration" aria-hidden="true"><div class="blob"></div><div class="card-art routine-card"><strong>Rotina de hoje</strong><div class="mini-row"><span class="mini-icon">📚</span> Leitura guiada</div><div class="mini-row"><span class="mini-icon">🎨</span> Atividade criativa</div><div class="mini-row"><span class="mini-icon">🤝</span> Roda de conversa</div></div><div class="card-art student-art"><strong>Pequenos passos ✨</strong><p>João concluiu a rotina visual.</p><div class="progress"><i style="width:76%;background:#f4cb72"></i></div><div class="avatar-stack"><span>😊</span><span>🌟</span><span>🎈</span></div></div><div class="desk"></div><div class="card-art note-art"><small>Conquista do dia</small><strong>Participou da leitura em dupla!</strong></div></div>
+    </section>
+    <div class="wave"></div>
+    <section class="needs" id="necessidades">
+      <div class="section-head"><div><h2>Conheça as necessidades educacionais</h2><p>Informações simples para apoiar, nunca para diagnosticar.</p></div><div class="arrows"><button class="round">←</button><button class="round">→</button></div></div>
+      <div class="need-grid">
+        <article class="need"><div class="need-icon">🧩</div><h3>TEA</h3><p>Uma forma única de vivenciar comunicação, interação, interesses, rotina e estímulos. Cada pessoa é única.</p><button onclick="irParaEstrategia('tea')">Ver estratégias para a sala <span>→</span></button></article>
+        <article class="need"><div class="need-icon">⚡</div><h3>TDAH</h3><p>Pode envolver atenção, organização e impulsividade. Instruções curtas e rotina ajudam no foco.</p><button onclick="irParaEstrategia('tdah')">Ver estratégias para a sala <span>→</span></button></article>
+        <article class="need"><div class="need-icon">💬</div><h3>TOD</h3><p>Frustrações podem ser difíceis. Comunicação respeitosa, regras claras e reforço positivo são caminhos.</p><button onclick="irParaEstrategia('tod')">Ver estratégias para a sala <span>→</span></button></article>
+        <article class="need"><div class="need-icon">📖</div><h3>Dislexia</h3><p>Pode afetar leitura e escrita. Mais tempo, recursos visuais e adaptações fazem diferença.</p><button onclick="irParaEstrategia('dislexia')">Ver estratégias para a sala <span>→</span></button></article>
+        <article class="need"><div class="need-icon">🌤️</div><h3>Ansiedade</h3><p>Previsibilidade, acolhimento e avisos antecipados favorecem a segurança emocional.</p><button onclick="irParaEstrategia('ansiedade')">Ver estratégias para a sala <span>→</span></button></article>
+        <article class="need"><div class="need-icon">🧠</div><h3>Aprendizagem</h3><p>Dificuldades em leitura, escrita, matemática ou organização pedem apoio individualizado.</p><button onclick="irParaEstrategia('aprendizagem')">Ver estratégias para a sala <span>→</span></button></article>
+        <article class="need"><div class="need-icon">🎧</div><h3>Sensibilidade sensorial</h3><p>Barulhos, luzes e texturas podem incomodar. Pausas e um ambiente previsível podem ajudar.</p><button onclick="irParaEstrategia('sensorial')">Ver estratégias para a sala <span>→</span></button></article>
+      </div>
+      <div class="note"><b>Um lembrete importante:</b> este espaço é educativo e de apoio pedagógico. Não realiza diagnósticos, não recomenda medicamentos e não substitui profissionais de saúde.</div>
+    </section>
+    <footer class="footer"><span>© 2026 Inclusão em Sala</span><span>Privacidade · Termos de uso · Acessibilidade</span></footer>
+  </main>
+
+  <main id="teacher" class="screen app-shell">
+    <aside class="sidebar"><div class="brand"><span class="logo">✦</span><span>Inclusão em Sala</span></div><div class="profile-tag">ÁREA DO PROFESSOR</div><nav class="menu">
+      <button class="active" data-tab="overview" onclick="setTab('teacher','overview')"><span>⌂</span>Visão geral</button>
+      <button data-tab="students" onclick="setTab('teacher','students')"><span>♙</span>Meus alunos</button>
+      <button data-tab="planner" onclick="setTab('teacher','planner')"><span>◎</span>Planejador de aulas</button>
+      <button data-tab="goals" onclick="setTab('teacher','goals')"><span>✓</span>Metas e evolução</button>
+      <button data-tab="records" onclick="setTab('teacher','records')"><span>☷</span>Registros de rotina</button>
+      <button data-tab="messages" onclick="setTab('teacher','messages')"><span>✉</span>Mensagens</button>
+    </nav><div class="sidebar-bottom">Ambiente seguro · Dados pedagógicos<button onclick="showScreen('home')">← Sair da demonstração</button></div></aside>
+    <section class="app-main">
+      <div class="app-top"><div class="greeting"><small id="teacherDate">QUINTA-FEIRA, 27 DE AGOSTO</small><h1 id="teacherGreeting">Bom dia, Marina! <span>☀️</span></h1></div><div class="user-actions"><button class="bell">🔔</button><div class="user"><div class="avatar">👩🏽</div>Marina</div></div></div>
+
+      <div class="tab-panel" data-tab="overview" id="painelVisaoGeralProf">
+        <div class="dashboard">
+          <div>
+            <section class="quick-actions">
+              <button class="quick" onclick="setTab('teacher','records');toggleEl('formNovoRegistro')"><b>☷</b>Registrar rotina</button>
+              <button class="quick" onclick="setTab('teacher','goals');toggleEl('formNovaMeta')"><b>＋</b>Criar nova meta</button>
+              <button class="quick" onclick="setTab('teacher','messages');toggleEl('formNovaMensagemProf')"><b>✉</b>Enviar mensagem</button>
+            </section>
+            <section class="panel records" style="margin-top:20px"><div class="panel-head"><h2>Registros recentes</h2><button class="link" onclick="setTab('teacher','records')">Ver todos</button></div><div id="overviewRegistros"></div></section>
+          </div>
+          <div>
+            <section class="panel"><div class="panel-head"><h2>Meus alunos</h2><button class="link" onclick="setTab('teacher','students')">+ Adicionar</button></div><div class="student-list" id="overviewAlunos"></div></section>
+            <section class="panel" style="margin-top:20px"><div class="panel-head"><h2>Metas em andamento</h2><button class="link" onclick="setTab('teacher','goals')">Ver todas</button></div><div class="goals" id="overviewMetas"></div></section>
+            <section class="panel" style="margin-top:20px"><div class="panel-head"><h2 id="overviewCalTitulo">Agosto 2026</h2></div><div class="calendar" id="overviewCalendario"></div></section>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel hidden" data-tab="students" id="painelAlunos">
+        <div class="panel">
+          <div class="section-toolbar"><h2>Meus alunos</h2><button class="btn" onclick="toggleEl('formNovoAluno')">+ Adicionar aluno</button></div>
+          <div id="formNovoAluno" class="form-card hidden">
+            <div class="form-grid">
+              <label>Nome<input id="alunoNome" placeholder="Nome do aluno"></label>
+              <label>Turma<select id="alunoTurma"></select></label>
+              <label>Avatar<select id="alunoEmoji"><option>👦</option><option>👧</option><option>🧒</option><option>👦🏻</option><option>👧🏻</option><option>👦🏾</option><option>👧🏾</option><option>👦🏼</option><option>👧🏼</option></select></label>
+              <label>Etiqueta<input id="alunoTag" placeholder="Ex.: Rotina"></label>
+              <label>Responsável<input id="alunoResponsavel" placeholder="Nome do responsável"></label>
+            </div>
+            <label class="checkbox-row"><input type="checkbox" id="alunoConsentimento"> Consentimento de imagem registrado</label>
+            <div class="form-actions"><button class="btn" onclick="submitNovoAluno()">Salvar aluno</button><button class="btn ghost" onclick="toggleEl('formNovoAluno')">Cancelar</button></div>
+          </div>
+          <div id="listaAlunos"></div>
+        </div>
+      </div>
+
+      <div class="tab-panel hidden" data-tab="planner" id="painelPlanejador">
+        <section class="search-box"><h2>Como podemos apoiar hoje?</h2><p>Busque por condição, ou explore todos os planejamentos prontos abaixo.</p><div class="search-input"><input id="strategyInput" aria-label="Buscar plano de aula" placeholder="Ex.: rotina, foco, transições, comunicação..." onkeydown="if(event.key==='Enter') searchStrategy(this.value)"><button onclick="searchStrategy(document.getElementById('strategyInput').value)">Buscar</button></div>
+          <div id="strategyResult" class="strategy-result">
+            <span class="badge-ok" id="resultCondicao">Geral</span>
+            <h3 id="resultTitle" style="margin-top:8px">Rotina visual</h3>
+            <p id="resultText">Use imagens ou cartões para antecipar as etapas do dia.</p>
+            <b style="font-size:13px">Atividades em sala</b><ul id="resultSala" style="margin:6px 0 12px;padding-left:18px;font-size:13px;color:#617186;line-height:1.6"></ul>
+            <b style="font-size:13px">Atividades para casa</b><ul id="resultCasa" style="margin:6px 0 12px;padding-left:18px;font-size:13px;color:#617186;line-height:1.6"></ul>
+            <div class="result-actions" style="align-items:center;flex-wrap:wrap">
+              <select id="strategyAlunoSelect" style="border:1px solid var(--line);border-radius:8px;padding:8px 10px"></select>
+              <button class="small-btn" onclick="atribuirPlanoBusca()">📘 Atribuir a aluno</button>
+            </div>
+          </div>
+        </section>
+        <div class="panel">
+          <div class="section-toolbar"><h2>Planejamentos por condição</h2><small style="color:var(--muted)">Prontos para usar, sem precisar pesquisar</small></div>
+          <div id="bibliotecaPlanos" class="plano-grid"></div>
+        </div>
+        <div class="panel" style="margin-top:20px">
+          <div class="section-toolbar"><h2>Planos atribuídos aos alunos</h2></div>
+          <div id="listaPlanosAtribuidos"></div>
+        </div>
+      </div>
+
+      <div class="tab-panel hidden" data-tab="goals" id="painelMetas">
+        <div class="panel">
+          <div class="section-toolbar"><h2>Metas e evolução</h2><button class="btn" onclick="toggleEl('formNovaMeta')">+ Nova meta</button></div>
+          <div id="formNovaMeta" class="form-card hidden">
+            <div class="form-grid">
+              <label>Aluno<select id="metaAluno"></select></label>
+              <label>Título<input id="metaTitulo" placeholder="Ex.: Participar da roda por 15 min"></label>
+              <label>Categoria<input id="metaCategoria" placeholder="Ex.: Socialização"></label>
+              <label>Progresso inicial (%)<input id="metaProgresso" type="number" min="0" max="100" value="0"></label>
+            </div>
+            <div class="form-actions"><button class="btn" onclick="submitNovaMeta()">Salvar meta</button><button class="btn ghost" onclick="toggleEl('formNovaMeta')">Cancelar</button></div>
+          </div>
+          <div id="listaMetasProfessor"></div>
+        </div>
+      </div>
+
+      <div class="tab-panel hidden" data-tab="records" id="painelRegistros">
+        <div class="panel">
+          <div class="section-toolbar"><h2>Registros de rotina</h2><button class="btn" onclick="toggleEl('formNovoRegistro')">+ Novo registro</button></div>
+          <div id="formNovoRegistro" class="form-card hidden">
+            <div class="form-grid">
+              <label>Aluno<select id="registroAluno"></select></label>
+              <label>Humor<select id="registroHumor"><option value="😊">😊 Feliz</option><option value="🙂">🙂 Tranquilo</option><option value="😌">😌 Calmo</option><option value="🧩">🧩 Estratégia</option><option value="😟">😟 Atenção</option><option value="🎉">🎉 Conquista</option></select></label>
+              <label>Título<input id="registroTitulo" placeholder="Título curto"></label>
+            </div>
+            <textarea id="registroTexto" placeholder="Descreva o que aconteceu..."></textarea>
+            <label class="checkbox-row"><input type="checkbox" id="registroVitoria"> Marcar como pequena vitória</label>
+            <div class="form-actions"><button class="btn" onclick="submitNovoRegistro()">Salvar registro</button><button class="btn ghost" onclick="toggleEl('formNovoRegistro')">Cancelar</button></div>
+          </div>
+          <div id="listaRegistrosProfessor"></div>
+        </div>
+      </div>
+
+      <div class="tab-panel hidden" data-tab="messages" id="painelMensagensProf">
+        <div class="panel">
+          <div class="section-toolbar"><h2>Mensagens</h2><button class="btn" onclick="toggleEl('formNovaMensagemProf')">+ Nova mensagem</button></div>
+          <div id="formNovaMensagemProf" class="form-card hidden">
+            <div class="form-grid"><label>Para o responsável de<select id="mensagemAlunoProf"></select></label></div>
+            <textarea id="mensagemTextoProf" placeholder="Escreva sua mensagem..."></textarea>
+            <div class="form-actions"><button class="btn" onclick="submitMensagemProf()">Enviar</button><button class="btn ghost" onclick="toggleEl('formNovaMensagemProf')">Cancelar</button></div>
+          </div>
+          <div id="listaMensagensProf"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <main id="parent" class="screen app-shell">
+    <aside class="sidebar"><div class="brand"><span class="logo">✦</span><span>Inclusão em Sala</span></div><div class="profile-tag" style="background:var(--purple-soft);color:var(--purple)">ÁREA DA FAMÍLIA</div><nav class="menu">
+      <button class="active" data-tab="overview" onclick="setTab('parent','overview')"><span>⌂</span>Visão geral</button>
+      <button data-tab="routine" onclick="setTab('parent','routine')"><span>☷</span>Rotina</button>
+      <button data-tab="activities" onclick="setTab('parent','activities')"><span>📘</span>Atividades em casa</button>
+      <button data-tab="goals" onclick="setTab('parent','goals')"><span>✓</span>Metas e evolução</button>
+      <button data-tab="messages" onclick="setTab('parent','messages')"><span>✉</span>Mensagens</button>
+      <button data-tab="agenda" onclick="setTab('parent','agenda')"><span>▣</span>Agenda</button>
+    </nav><div class="sidebar-bottom">Apenas dados de João Almeida<button onclick="showScreen('home')">← Sair da demonstração</button></div></aside>
+    <section class="app-main">
+      <div class="app-top"><div class="greeting"><small>PAINEL DA FAMÍLIA</small><h1>Olá, Fernanda! <span>🌻</span></h1></div><div class="user-actions"><button class="bell">🔔</button><div class="user"><div class="avatar" style="background:#e6dcf9">👩🏻</div>Fernanda</div></div></div>
+
+      <div class="tab-panel" data-tab="overview" id="painelVisaoGeralFam">
+        <div class="dashboard" style="grid-template-columns:1fr">
+          <section class="parent-hero"><div><h1>Bem-vindos, pais e responsáveis!</h1><p>Aqui está a rotina do seu filho. Acompanhe os momentos importantes e celebre cada pequeno passo junto com a escola.</p></div><div class="child-pill">👦🏾 <span>João Almeida</span><br><small style="font-weight:500;color:#748296">3º ano A</small></div></section>
+          <section class="panel"><div class="panel-head"><h2>Resumo de hoje</h2><span class="tag" id="parentTagHoje">Hoje</span></div><div id="parentResumoHoje"></div><button class="small-btn" style="margin-top:12px" onclick="setTab('parent','routine')">Ver registro completo</button></section>
+          <section class="panel victory" id="parentVictoryPanel"><div class="panel-head"><h2>Pequenas Vitórias</h2><span class="award">🏅</span></div><p id="parentVictoryText" style="color:#766633;line-height:1.5;margin:0"></p></section>
+          <section class="panel"><div class="panel-head"><h2>Atividades recomendadas para casa</h2><button class="link" onclick="setTab('parent','activities')">Ver tudo</button></div><div id="parentActivitiesResumo"></div></section>
+          <section class="panel"><div class="panel-head"><h2>Metas e evolução</h2><button class="link" onclick="setTab('parent','goals')">Acompanhar</button></div><div class="goals" id="parentGoalsResumo"></div></section>
+          <section class="panel"><div class="panel-head"><h2>Últimas atualizações</h2><button class="link" onclick="setTab('parent','messages')">Ver tudo</button></div><div class="timeline" id="parentTimeline"></div>
+            <button class="small-btn alt" onclick="toggleEl('formMensagemPaiOverview')">✉ Enviar observação à professora</button>
+            <div id="formMensagemPaiOverview" class="form-card hidden" style="margin-top:12px"><textarea id="mensagemTextoPaiOverview" placeholder="Escreva sua mensagem..."></textarea><div class="form-actions"><button class="btn" onclick="submitMensagemPai('mensagemTextoPaiOverview')">Enviar</button><button class="btn ghost" onclick="toggleEl('formMensagemPaiOverview')">Cancelar</button></div></div>
+          </section>
+        </div>
+      </div>
+
+      <div class="tab-panel hidden" data-tab="routine" id="painelRotinaFam">
+        <div class="panel"><div class="section-toolbar"><h2>Rotina de João</h2></div><div id="parentRegistrosCompletos"></div></div>
+      </div>
+
+      <div class="tab-panel hidden" data-tab="activities" id="painelAtividadesFam">
+        <div class="panel"><div class="section-toolbar"><h2>Atividades recomendadas para casa</h2><small style="color:var(--muted)">Baseadas nos planos que a professora atribuiu a João</small></div><div id="parentActivitiesCompletas"></div></div>
+      </div>
+
+      <div class="tab-panel hidden" data-tab="goals" id="painelMetasFam">
+        <div class="panel"><div class="section-toolbar"><h2>Metas e evolução</h2></div><div class="goals" id="parentMetasCompletas"></div></div>
+      </div>
+
+      <div class="tab-panel hidden" data-tab="messages" id="painelMensagensFam">
+        <div class="panel">
+          <div class="section-toolbar"><h2>Mensagens com a escola</h2><button class="btn" onclick="toggleEl('formMensagemPaiFull')">+ Nova mensagem</button></div>
+          <div id="formMensagemPaiFull" class="form-card hidden"><textarea id="mensagemTextoPaiFull" placeholder="Escreva sua mensagem..."></textarea><div class="form-actions"><button class="btn" onclick="submitMensagemPai('mensagemTextoPaiFull')">Enviar</button><button class="btn ghost" onclick="toggleEl('formMensagemPaiFull')">Cancelar</button></div></div>
+          <div id="parentMensagensCompletas"></div>
+        </div>
+      </div>
+
+      <div class="tab-panel hidden" data-tab="agenda" id="painelAgendaFam">
+        <div class="panel"><div class="section-toolbar"><h2>Agenda da turma</h2></div><div class="timeline" id="parentAgendaLista"></div></div>
+      </div>
+    </section>
+  </main>
+
+  <main id="school" class="screen app-shell">
+    <aside class="sidebar"><div class="brand"><span class="logo">✦</span><span>Inclusão em Sala</span></div><div class="profile-tag" style="background:var(--sun-soft);color:#8a6720">GESTÃO ESCOLAR</div><nav class="menu">
+      <button class="active" data-tab="overview" onclick="setTab('school','overview')"><span>⌂</span>Painel da escola</button>
+      <button data-tab="users" onclick="setTab('school','users')"><span>♙</span>Usuários</button>
+      <button data-tab="classes" onclick="setTab('school','classes')"><span>▦</span>Turmas</button>
+      <button data-tab="permissions" onclick="setTab('school','permissions')"><span>⚿</span>Permissões</button>
+      <button data-tab="contents" onclick="setTab('school','contents')"><span>▤</span>Conteúdos</button>
+    </nav><div class="sidebar-bottom">Controle e proteção de dados<button onclick="showScreen('home')">← Sair da demonstração</button></div></aside>
+    <section class="app-main">
+      <div class="app-top"><div class="greeting"><small>GESTÃO DA ESCOLA</small><h1>Visão geral <span>🏫</span></h1></div><div class="user-actions"><div class="user"><div class="avatar" style="background:#dcefe8">🧑🏽‍💼</div>Coordenação</div></div></div>
+
+      <div class="tab-panel" data-tab="overview" id="painelVisaoGeralEscola">
+        <div class="dashboard" style="grid-template-columns:1fr">
+          <section class="school-stats"><div class="stat"><strong id="statAlunos">0</strong><small>Alunos acompanhados</small></div><div class="stat"><strong id="statResponsaveis">0</strong><small>Responsáveis vinculados</small></div><div class="stat"><strong id="statMetas">0</strong><small>Metas em andamento</small></div></section>
+          <section class="panel"><div class="panel-head"><h2>Atividade recente</h2></div><div id="schoolAtividade"></div></section>
+          <section class="panel"><div class="panel-head"><h2>Proteção de dados</h2><span class="tag" style="background:#e9f6f2;color:var(--teal)">LGPD</span></div><div class="goals">
+            <div class="goal"><div class="goal-head"><span>Consentimentos para imagens</span><span id="pctConsentimento" style="color:var(--teal)">0%</span></div><small id="pctConsentimentoTexto">0 dos 0 alunos com status revisado</small><div class="progress"><i id="pctConsentimentoBarra" style="width:0%;background:var(--teal)"></i></div></div>
+            <div class="goal"><div class="goal-head"><span>Perfis com permissões revisadas</span><span id="pctPermissoes" style="color:var(--teal)">0%</span></div><small>Acesso por perfil ativo e auditado</small><div class="progress"><i id="pctPermissoesBarra" style="width:0%;background:var(--teal)"></i></div></div>
+          </div></section>
+          <section class="panel"><div class="panel-head"><h2>Ações administrativas</h2></div><div class="quick-actions">
+            <button class="quick" onclick="setTab('school','users');toggleEl('formNovoUsuario')"><b>＋</b>Cadastrar usuário</button>
+            <button class="quick" onclick="setTab('school','classes')"><b>▦</b>Gerenciar turmas</button>
+            <button class="quick" onclick="setTab('school','permissions')"><b>⚿</b>Revisar permissões</button>
+          </div></section>
+          <section class="panel"><div class="panel-head"><h2>Conteúdos pedagógicos</h2><button class="link" onclick="setTab('school','contents')">Gerenciar biblioteca</button></div><p id="textoBiblioteca" style="color:var(--muted);font-size:13px;line-height:1.6"></p><button class="small-btn" onclick="setTab('school','contents')">Ver conteúdos</button></section>
+        </div>
+      </div>
+
+      <div class="tab-panel hidden" data-tab="users" id="painelUsuarios">
+        <div class="panel">
+          <div class="section-toolbar"><h2>Usuários</h2><button class="btn" onclick="toggleEl('formNovoUsuario')">+ Cadastrar usuário</button></div>
+          <div id="formNovoUsuario" class="form-card hidden">
+            <div class="form-grid">
+              <label>Nome<input id="usuarioNome" placeholder="Nome completo"></label>
+              <label>Papel<select id="usuarioPapel"><option>Professor(a)</option><option>Responsável</option><option>Gestão escolar</option><option>Coordenação</option></select></label>
+            </div>
+            <div class="form-actions"><button class="btn" onclick="submitNovoUsuario()">Salvar usuário</button><button class="btn ghost" onclick="toggleEl('formNovoUsuario')">Cancelar</button></div>
+          </div>
+          <div id="listaUsuarios"></div>
+        </div>
+      </div>
+
+      <div class="tab-panel hidden" data-tab="classes" id="painelTurmas">
+        <div class="panel">
+          <div class="section-toolbar"><h2>Turmas</h2><button class="btn" onclick="toggleEl('formNovaTurma')">+ Nova turma</button></div>
+          <div id="formNovaTurma" class="form-card hidden">
+            <div class="form-grid"><label>Nome da turma<input id="turmaNome" placeholder="Ex.: 4º ano B"></label></div>
+            <div class="form-actions"><button class="btn" onclick="submitNovaTurma()">Salvar turma</button><button class="btn ghost" onclick="toggleEl('formNovaTurma')">Cancelar</button></div>
+          </div>
+          <div id="listaTurmas"></div>
+        </div>
+      </div>
+
+      <div class="tab-panel hidden" data-tab="permissions" id="painelPermissoes">
+        <div class="panel"><div class="section-toolbar"><h2>Permissões por usuário</h2></div><div id="listaPermissoes"></div></div>
+      </div>
+
+      <div class="tab-panel hidden" data-tab="contents" id="painelConteudos">
+        <div class="panel"><div class="section-toolbar"><h2>Biblioteca de conteúdos pedagógicos</h2></div><div id="listaConteudos"></div></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    /* ===================== PERSISTÊNCIA ===================== */
+    const STORE_KEY = 'inclusao-em-sala-dados-v1';
+    const FAMILY_STUDENT_ID = 'joao';
+    let DB = null;
+    let filtroRegistros = null;
+    let estrategiaAtual = null;
+
+    function agora(){ return new Date().toISOString(); }
+    function dataComOffset(diasAtras,h,m){ const d=new Date(); d.setDate(d.getDate()-diasAtras); d.setHours(h,m,0,0); return d.toISOString(); }
+    function uid(prefixo){ return prefixo+'-'+Math.random().toString(36).slice(2,9); }
+    function esc(str){ const d=document.createElement('div'); d.textContent = str==null?'':String(str); return d.innerHTML; }
+
+    function dadosPadrao(){
+      return {
+        students:[
+          {id:'joao', nome:'João Almeida', turma:'3º ano A', emoji:'👦🏾', cor:'#fbcc86', tag:'Rotina', consentimento:true, responsavel:'Fernanda Almeida'},
+          {id:'livia', nome:'Lívia Santos', turma:'3º ano A', emoji:'👧🏻', cor:'#d5e9f9', tag:'Leitura', consentimento:true, responsavel:'Marcos Santos'},
+          {id:'pedro', nome:'Pedro Costa', turma:'3º ano A', emoji:'👦🏻', cor:'#e6dbcc', tag:'Interação', consentimento:false, responsavel:'Ana Costa'}
+        ],
+        turmas:[{id:'t-3a', nome:'3º ano A'}],
+        usuarios:[
+          {id:'u-marina', nome:'Marina Souza', papel:'Professor(a)', revisado:true},
+          {id:'u-fernanda', nome:'Fernanda Almeida', papel:'Responsável', revisado:true},
+          {id:'u-coord', nome:'Coordenação', papel:'Gestão escolar', revisado:true}
+        ],
+        registros:[
+          {id:'r-1', alunoId:'joao', humor:'😊', titulo:'Um dia de boas descobertas', texto:'João participou da atividade de leitura, realizou matemática com apoio visual e interagiu com os colegas no recreio.', autor:'Marina Souza', quando:dataComOffset(0,10,40), vitoria:false},
+          {id:'r-2', alunoId:'joao', humor:'🧩', titulo:'Estratégia que ajudou', texto:'A rotina visual facilitou a troca de atividades e ele retomou a tarefa com tranquilidade.', autor:'Marina Souza', quando:dataComOffset(0,9,30), vitoria:true},
+          {id:'r-3', alunoId:'livia', humor:'🙂', titulo:'Boa participação em matemática', texto:'Boa participação em matemática com uso de material concreto.', autor:'Marina Souza', quando:dataComOffset(0,9,15), vitoria:false},
+          {id:'r-4', alunoId:'pedro', humor:'😌', titulo:'Mediação na transição', texto:'Precisou de mediação na transição, mas retomou a atividade.', autor:'Marina Souza', quando:dataComOffset(1,14,20), vitoria:false}
+        ],
+        metas:[
+          {id:'g-1', alunoId:'joao', titulo:'Participar de atividades em grupo', categoria:'Socialização', progresso:70, quando:dataComOffset(0,8,0)},
+          {id:'g-2', alunoId:'joao', titulo:'Pedir ajuda ao sentir dificuldade', categoria:'Autonomia', progresso:45, quando:dataComOffset(1,8,0)},
+          {id:'g-3', alunoId:'livia', titulo:'Concluir rotina da manhã', categoria:'Autonomia', progresso:55, quando:dataComOffset(0,8,0)}
+        ],
+        mensagens:[
+          {id:'m-1', alunoId:'joao', de:'Marina Souza', para:'Fernanda Almeida', texto:'Novo registro de rotina disponível hoje.', quando:dataComOffset(0,10,40)}
+        ],
+        estrategiasSalvas:[],
+        planosAtribuidos:[
+          {id:'p-1', alunoId:'joao', planoChave:'tea', quando:dataComOffset(1,9,0)}
+        ],
+        atividades:[
+          {icone:'👩🏽‍🏫', titulo:'Professora Marina criou um registro', detalhe:'João Almeida · 3º ano A', quando:dataComOffset(0,10,40)},
+          {icone:'👨‍👩‍👦', titulo:'Responsável confirmou comunicado', detalhe:'Fernanda Almeida · 3º ano A', quando:dataComOffset(0,9,10)},
+          {icone:'✓', titulo:'Nova meta compartilhada', detalhe:'Turma 3º ano A', quando:dataComOffset(1,8,0)}
+        ],
+        eventos:[{titulo:'Feira de ciências', quando:'03 de setembro'}]
+      };
+    }
+
+    async function carregarDados(){
+      try{
+        if(window.storage){
+          const res = await window.storage.get(STORE_KEY, false);
+          if(res && res.value){ DB = JSON.parse(res.value); migrarDados(); return; }
+        }
+      }catch(e){ /* ainda não existe: usa os dados padrão */ }
+      DB = dadosPadrao();
+      await salvarDados();
+    }
+
+    function migrarDados(){
+      if(!DB.planosAtribuidos) DB.planosAtribuidos = [];
+      if(!DB.estrategiasSalvas) DB.estrategiasSalvas = [];
+    }
+
+    async function salvarDados(){
+      try{ if(window.storage){ await window.storage.set(STORE_KEY, JSON.stringify(DB), false); } }
+      catch(e){ console.error('Não foi possível salvar os dados agora.', e); }
+    }
+
+    function registrarAtividade(icone,titulo,detalhe){
+      DB.atividades.unshift({icone,titulo,detalhe,quando:agora()});
+      DB.atividades = DB.atividades.slice(0,30);
+    }
+
+    /* ===================== HELPERS ===================== */
+    function aluno(id){ return DB.students.find(s=>s.id===id); }
+    function nomeAluno(id){ const a=aluno(id); return a?a.nome:'Aluno removido'; }
+    function registrosDe(id){ return DB.registros.filter(r=>r.alunoId===id).sort((a,b)=>new Date(b.quando)-new Date(a.quando)); }
+    function metasDe(id){ return DB.metas.filter(g=>g.alunoId===id).sort((a,b)=>new Date(b.quando)-new Date(a.quando)); }
+    function mensagensDe(id){ return DB.mensagens.filter(m=>m.alunoId===id).sort((a,b)=>new Date(b.quando)-new Date(a.quando)); }
+    function planosDe(id){ return DB.planosAtribuidos.filter(a=>a.alunoId===id).sort((a,b)=>new Date(b.quando)-new Date(a.quando)); }
+
+    function fmtQuando(iso){
+      const d = new Date(iso), hoje = new Date(), ontem = new Date(); ontem.setDate(hoje.getDate()-1);
+      const mesmoDia=(a,b)=>a.toDateString()===b.toDateString();
+      const hora = d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+      if(mesmoDia(d,hoje)) return 'Hoje às '+hora;
+      if(mesmoDia(d,ontem)) return 'Ontem às '+hora;
+      return d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'})+' às '+hora;
+    }
+
+    function toggleEl(id){ document.getElementById(id).classList.toggle('hidden'); }
+
+    /* ===================== NAVEGAÇÃO ===================== */
+    function showScreen(id){
+      document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.body.classList.toggle('app-mode', id!=='home');
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    function setTab(area, tab){
+      document.querySelectorAll('#'+area+' .menu button').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
+      document.querySelectorAll('#'+area+' .tab-panel').forEach(p=>{ p.classList.toggle('hidden', p.dataset.tab!==tab); });
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    /* ===================== PLANEJADOR DE AULAS ===================== */
+    const planos={
+      tea:{condicao:'TEA', titulo:'Rotina visual e antecipação', resumo:'Use cartões ou imagens para antecipar cada etapa do dia e reduzir a ansiedade diante de mudanças.',
+        atividadesSala:['Montar um quadro de rotina visual com as atividades do dia em ordem','Avisar sobre qualquer mudança na rotina com antecedência, usando os mesmos cartões','Deixar o aluno marcar ou virar o cartão de cada atividade concluída'],
+        atividadesCasa:['Criar um quadro de rotina visual simples para as atividades de casa (acordar, escovar os dentes, etc.)','Avisar com antecedência sobre mudanças na rotina familiar, como passeios ou visitas','Comemorar junto quando ele completar as etapas da rotina do dia']},
+      tdah:{condicao:'TDAH', titulo:'Foco em pequenos blocos', resumo:'Divida tarefas em partes curtas, com uma instrução por vez e pausas de movimento planejadas.',
+        atividadesSala:['Dividir atividades longas em etapas curtas com um objetivo claro por vez','Dar apenas uma instrução por vez, confirmando que foi compreendida','Incluir pausas curtas de movimento entre uma tarefa e outra'],
+        atividadesCasa:['Dividir a lição de casa em blocos curtos com pequenos intervalos','Usar um cronômetro visual para ajudar a visualizar o tempo de cada tarefa','Elogiar o esforço em concluir cada bloco, não apenas o resultado final']},
+      tod:{condicao:'TOD', titulo:'Regras claras e reforço positivo', resumo:'Combine poucos acordos visíveis, ofereça escolhas possíveis e valorize comportamentos de colaboração.',
+        atividadesSala:['Definir poucas regras, claras e visíveis para toda a turma','Oferecer escolhas possíveis dentro de uma mesma tarefa (ex.: qual atividade fazer primeiro)','Valorizar imediatamente momentos de colaboração e cooperação'],
+        atividadesCasa:['Combinar poucas regras claras em casa e revisá-las juntos','Oferecer escolhas dentro de limites (ex.: tomar banho antes ou depois do jantar)','Elogiar comportamentos de cooperação assim que acontecerem']},
+      dislexia:{condicao:'Dislexia', titulo:'Leitura com apoio visual', resumo:'Ofereça textos com boa legibilidade, destaque palavras-chave e dê mais tempo para leitura e resposta.',
+        atividadesSala:['Usar textos com fonte ampliada e bom espaçamento entre linhas','Destacar palavras-chave antes da leitura do texto','Dar tempo extra para leitura e para responder às perguntas'],
+        atividadesCasa:['Ler juntos em voz alta, sem pressa, revezando parágrafos','Destacar ou sublinhar palavras novas encontradas na leitura','Valorizar o esforço na leitura, não apenas a velocidade']},
+      ansiedade:{condicao:'Ansiedade', titulo:'Antecipar para acolher', resumo:'Apresente a rotina e os imprevistos do dia com calma, oferecendo um ponto de apoio quando necessário.',
+        atividadesSala:['Apresentar a rotina do dia logo pela manhã, incluindo possíveis mudanças','Combinar um sinal ou palavra-chave para quando ele precisar de uma pausa','Oferecer um ponto de apoio (colega ou cantinho tranquilo) em momentos difíceis'],
+        atividadesCasa:['Conversar sobre o dia seguinte com calma, antes de dormir','Combinar um sinal para pedir uma pausa quando sentir-se ansioso','Criar um cantinho tranquilo em casa para momentos de acolhimento']},
+      sensorial:{condicao:'Sensibilidade sensorial', titulo:'Pausa sensorial planejada', resumo:'Crie um local tranquilo, reduza estímulos quando possível e combine pausas antes de momentos agitados.',
+        atividadesSala:['Reservar um cantinho tranquilo na sala para pausas sensoriais','Reduzir estímulos (som, luz) quando possível antes de atividades mais agitadas','Avisar com antecedência sobre sons ou situações mais intensas (ex.: alarme, educação física)'],
+        atividadesCasa:['Criar um cantinho tranquilo em casa para momentos de pausa sensorial','Avisar com antecedência sobre sons ou ambientes mais intensos (festas, shoppings)','Observar quais estímulos incomodam mais, para compartilhar com a escola']},
+      aprendizagem:{condicao:'Dificuldade de aprendizagem', titulo:'Múltiplas formas de aprender', resumo:'Use recursos visuais, material concreto e explicações em etapas, avaliando também pela prática.',
+        atividadesSala:['Explicar o conteúdo em pequenas etapas, com exemplos práticos','Usar material concreto (objetos, desenhos) para ilustrar conceitos abstratos','Avaliar também pela demonstração prática, não só pela prova escrita'],
+        atividadesCasa:['Reforçar o conteúdo com exemplos do dia a dia (ex.: matemática nas compras)','Usar desenhos ou objetos para explicar de outra forma quando ele não entender','Celebrar o progresso em pequenas etapas, não só o resultado final']},
+      default:{condicao:'Geral', titulo:'Rotina visual', resumo:'Use imagens ou cartões com as etapas do dia. Antecipe mudanças e permita que o aluno marque cada tarefa concluída.',
+        atividadesSala:['Montar um quadro de rotina visual simples','Avisar mudanças com antecedência','Permitir que o aluno marque tarefas concluídas'],
+        atividadesCasa:['Manter uma rotina visível também em casa','Avisar com antecedência sobre mudanças no dia a dia','Celebrar pequenas conquistas junto com a criança']}
+    };
+
+    function irParaEstrategia(chave){ showScreen('teacher'); setTab('teacher','planner'); setTimeout(()=>searchStrategy(chave),150); }
+
+    function searchStrategy(query){
+      let q=(query||'').toLowerCase();
+      let key=Object.keys(planos).find(k=>k!=='default' && q.includes(k))||'default';
+      let p=planos[key];
+      estrategiaAtual = {chave:key};
+      document.getElementById('strategyInput').value=query||'';
+      document.getElementById('resultCondicao').textContent=p.condicao;
+      document.getElementById('resultTitle').textContent=p.titulo;
+      document.getElementById('resultText').textContent=p.resumo;
+      document.getElementById('resultSala').innerHTML=p.atividadesSala.map(a=>'<li>'+esc(a)+'</li>').join('');
+      document.getElementById('resultCasa').innerHTML=p.atividadesCasa.map(a=>'<li>'+esc(a)+'</li>').join('');
+      preencherSelectAlunos('strategyAlunoSelect');
+      document.getElementById('strategyResult').classList.add('show');
+      document.getElementById('strategyResult').scrollIntoView({behavior:'smooth',block:'center'});
+    }
+
+    function jaAtribuido(alunoId, chave){ return DB.planosAtribuidos.some(a=>a.alunoId===alunoId && a.planoChave===chave); }
+
+    function atribuirPlano(chave, alunoId){
+      if(!alunoId){ alert('Escolha um aluno.'); return; }
+      if(jaAtribuido(alunoId, chave)){ alert('Este plano já está atribuído a esse aluno.'); return; }
+      DB.planosAtribuidos.unshift({id:uid('p'), alunoId, planoChave:chave, quando:agora()});
+      registrarAtividade('📘','Plano de aula atribuído a um aluno', nomeAluno(alunoId)+' · '+planos[chave].titulo);
+      salvarDados(); renderAll();
+    }
+    function atribuirPlanoCard(chave, btnEl){
+      const card=btnEl.closest('.plano-card');
+      atribuirPlano(chave, card.querySelector('.plano-aluno-select').value);
+    }
+    function atribuirPlanoBusca(){
+      if(!estrategiaAtual) return;
+      atribuirPlano(estrategiaAtual.chave, document.getElementById('strategyAlunoSelect').value);
+    }
+    function removerAtribuicao(id){ DB.planosAtribuidos = DB.planosAtribuidos.filter(a=>a.id!==id); salvarDados(); renderAll(); }
+
+    function toggleFont(){ document.body.classList.toggle('large-font'); document.body.style.fontSize=document.body.classList.contains('large-font')?'18px':'15px'; }
+
+    /* ===================== AÇÕES: ALUNOS ===================== */
+    function preencherSelectTurmas(selectId){ const sel=document.getElementById(selectId); if(!sel) return; sel.innerHTML = DB.turmas.map(t=>`<option value="${esc(t.nome)}">${esc(t.nome)}</option>`).join(''); }
+    function preencherSelectAlunos(selectId){ const sel=document.getElementById(selectId); if(!sel) return; sel.innerHTML = DB.students.map(s=>`<option value="${s.id}">${esc(s.nome)}</option>`).join(''); }
+
+    function submitNovoAluno(){
+      const nome=document.getElementById('alunoNome').value.trim();
+      if(!nome){ alert('Informe o nome do aluno.'); return; }
+      const turma=document.getElementById('alunoTurma').value || (DB.turmas[0]?DB.turmas[0].nome:'Sem turma');
+      const emoji=document.getElementById('alunoEmoji').value;
+      const tag=document.getElementById('alunoTag').value.trim()||'Acompanhamento';
+      const responsavel=document.getElementById('alunoResponsavel').value.trim()||'Responsável não informado';
+      const consentimento=document.getElementById('alunoConsentimento').checked;
+      const cores=['#fbcc86','#d5e9f9','#e6dbcc','#e6dcf9','#cdeee0'];
+      const cor=cores[DB.students.length % cores.length];
+      DB.students.push({id:uid('a'), nome, turma, emoji, cor, tag, consentimento, responsavel});
+      registrarAtividade('🧑\u200d🎓','Novo aluno cadastrado', nome+' · '+turma);
+      document.getElementById('alunoNome').value=''; document.getElementById('alunoTag').value=''; document.getElementById('alunoResponsavel').value=''; document.getElementById('alunoConsentimento').checked=false;
+      toggleEl('formNovoAluno'); salvarDados(); renderAll();
+    }
+
+    function removerAluno(id){
+      if(!confirm('Remover este aluno e todos os registros associados a ele?')) return;
+      DB.students = DB.students.filter(s=>s.id!==id);
+      DB.registros = DB.registros.filter(r=>r.alunoId!==id);
+      DB.metas = DB.metas.filter(g=>g.alunoId!==id);
+      DB.mensagens = DB.mensagens.filter(m=>m.alunoId!==id);
+      DB.planosAtribuidos = DB.planosAtribuidos.filter(a=>a.alunoId!==id);
+      salvarDados(); renderAll();
+    }
+
+    function registrosParaAluno(id){ filtroRegistros = id; setTab('teacher','records'); renderAll(); }
+
+    /* ===================== AÇÕES: REGISTROS ===================== */
+    function submitNovoRegistro(){
+      const alunoId=document.getElementById('registroAluno').value;
+      const titulo=document.getElementById('registroTitulo').value.trim();
+      const texto=document.getElementById('registroTexto').value.trim();
+      if(!alunoId||!titulo||!texto){ alert('Preencha aluno, título e descrição.'); return; }
+      const humor=document.getElementById('registroHumor').value;
+      const vitoria=document.getElementById('registroVitoria').checked;
+      DB.registros.unshift({id:uid('r'), alunoId, humor, titulo, texto, autor:'Marina Souza', quando:agora(), vitoria});
+      registrarAtividade('👩🏽\u200d🏫','Professora Marina criou um registro', nomeAluno(alunoId)+' · '+(aluno(alunoId)?aluno(alunoId).turma:''));
+      document.getElementById('registroTitulo').value=''; document.getElementById('registroTexto').value=''; document.getElementById('registroVitoria').checked=false;
+      toggleEl('formNovoRegistro'); salvarDados(); renderAll();
+    }
+    function removerRegistro(id){ DB.registros = DB.registros.filter(r=>r.id!==id); salvarDados(); renderAll(); }
+
+    /* ===================== AÇÕES: METAS ===================== */
+    function submitNovaMeta(){
+      const alunoId=document.getElementById('metaAluno').value;
+      const titulo=document.getElementById('metaTitulo').value.trim();
+      const categoria=document.getElementById('metaCategoria').value.trim()||'Geral';
+      let progresso=parseInt(document.getElementById('metaProgresso').value,10); if(isNaN(progresso)) progresso=0;
+      progresso=Math.max(0,Math.min(100,progresso));
+      if(!alunoId||!titulo){ alert('Preencha aluno e título da meta.'); return; }
+      DB.metas.unshift({id:uid('g'), alunoId, titulo, categoria, progresso, quando:agora()});
+      registrarAtividade('✓','Nova meta compartilhada', nomeAluno(alunoId)+' · '+categoria);
+      document.getElementById('metaTitulo').value=''; document.getElementById('metaCategoria').value=''; document.getElementById('metaProgresso').value=0;
+      toggleEl('formNovaMeta'); salvarDados(); renderAll();
+    }
+    function ajustarMeta(id,delta){
+      const g=DB.metas.find(g=>g.id===id); if(!g) return;
+      g.progresso = delta===100 ? 100 : Math.max(0,Math.min(100,g.progresso+delta));
+      g.quando=agora();
+      if(g.progresso===100) registrarAtividade('🏅','Meta concluída', nomeAluno(g.alunoId)+' · '+g.titulo);
+      salvarDados(); renderAll();
+    }
+    function removerMeta(id){ DB.metas=DB.metas.filter(g=>g.id!==id); salvarDados(); renderAll(); }
+
+    /* ===================== AÇÕES: MENSAGENS ===================== */
+    function submitMensagemProf(){
+      const alunoId=document.getElementById('mensagemAlunoProf').value;
+      const texto=document.getElementById('mensagemTextoProf').value.trim();
+      if(!alunoId||!texto){ alert('Escolha o aluno e escreva a mensagem.'); return; }
+      const a=aluno(alunoId);
+      DB.mensagens.unshift({id:uid('m'), alunoId, de:'Marina Souza', para:a?a.responsavel:'Responsável', texto, quando:agora()});
+      registrarAtividade('✉️','Mensagem enviada à família', (a?a.responsavel:'Responsável')+' · '+nomeAluno(alunoId));
+      document.getElementById('mensagemTextoProf').value='';
+      toggleEl('formNovaMensagemProf'); salvarDados(); renderAll();
+    }
+    function submitMensagemPai(inputId){
+      const texto=document.getElementById(inputId).value.trim();
+      if(!texto) return;
+      DB.mensagens.unshift({id:uid('m'), alunoId:FAMILY_STUDENT_ID, de:'Fernanda Almeida', para:'Marina Souza', texto, quando:agora()});
+      registrarAtividade('👨\u200d👩\u200d👦','Responsável enviou uma observação', nomeAluno(FAMILY_STUDENT_ID));
+      document.getElementById(inputId).value='';
+      salvarDados(); renderAll();
+    }
+
+    /* ===================== AÇÕES: ESCOLA ===================== */
+    function submitNovaTurma(){
+      const nome=document.getElementById('turmaNome').value.trim();
+      if(!nome){ alert('Informe o nome da turma.'); return; }
+      DB.turmas.push({id:uid('t'), nome});
+      document.getElementById('turmaNome').value=''; toggleEl('formNovaTurma'); salvarDados(); renderAll();
+    }
+    function removerTurma(id){
+      const t=DB.turmas.find(t=>t.id===id); if(!t) return;
+      if(DB.students.some(s=>s.turma===t.nome)){ alert('Não é possível remover: existem alunos nesta turma.'); return; }
+      DB.turmas = DB.turmas.filter(t=>t.id!==id); salvarDados(); renderAll();
+    }
+    function submitNovoUsuario(){
+      const nome=document.getElementById('usuarioNome').value.trim();
+      const papel=document.getElementById('usuarioPapel').value;
+      if(!nome){ alert('Informe o nome do usuário.'); return; }
+      DB.usuarios.push({id:uid('u'), nome, papel, revisado:false});
+      registrarAtividade('➕','Novo usuário cadastrado', nome+' · '+papel);
+      document.getElementById('usuarioNome').value=''; toggleEl('formNovoUsuario'); salvarDados(); renderAll();
+    }
+    function removerUsuario(id){ DB.usuarios=DB.usuarios.filter(u=>u.id!==id); salvarDados(); renderAll(); }
+    function toggleRevisado(id){ const u=DB.usuarios.find(u=>u.id===id); if(!u) return; u.revisado=!u.revisado; salvarDados(); renderAll(); }
+
+    /* ===================== RENDERIZAÇÃO ===================== */
+    function renderCalendario(elId){
+      const el=document.getElementById(elId); if(!el) return;
+      const hoje=new Date(), ano=hoje.getFullYear(), mes=hoje.getMonth();
+      const primeiroDiaSemana=new Date(ano,mes,1).getDay();
+      const diasNoMes=new Date(ano,mes+1,0).getDate();
+      let html='<b>D</b><b>S</b><b>T</b><b>Q</b><b>Q</b><b>S</b><b>S</b>';
+      for(let i=0;i<primeiroDiaSemana;i++) html+='<span></span>';
+      for(let d=1; d<=diasNoMes; d++){ html += '<span class="'+(d===hoje.getDate()?'today':'')+'">'+d+'</span>'; }
+      el.innerHTML = html;
+    }
+    function tituloMesAno(){ const hoje=new Date(); const nome=hoje.toLocaleDateString('pt-BR',{month:'long'}); return nome.charAt(0).toUpperCase()+nome.slice(1)+' '+hoje.getFullYear(); }
+    function saudacao(){ const h=new Date().getHours(); if(h<12) return 'Bom dia'; if(h<18) return 'Boa tarde'; return 'Boa noite'; }
+
+    function renderTeacherOverview(){
+      const dataEl=document.getElementById('teacherDate');
+      if(dataEl) dataEl.textContent = new Date().toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long'}).toUpperCase();
+      const greet=document.getElementById('teacherGreeting'); if(greet) greet.innerHTML = saudacao()+', Marina! <span>☀️</span>';
+
+      const recentes = [...DB.registros].sort((a,b)=>new Date(b.quando)-new Date(a.quando)).slice(0,4);
+      const elRec=document.getElementById('overviewRegistros');
+      if(elRec) elRec.innerHTML = recentes.length? recentes.map(r=>'<div class="record"><div class="mood">'+r.humor+'</div><div><b>'+esc(nomeAluno(r.alunoId))+' · '+fmtQuando(r.quando)+'</b><p>'+esc(r.texto)+'</p></div></div>').join('') : '<p class="empty-state">Nenhum registro ainda. Crie o primeiro em "Registros de rotina".</p>';
+
+      const elAlunos=document.getElementById('overviewAlunos');
+      if(elAlunos) elAlunos.innerHTML = DB.students.length? DB.students.slice(0,4).map(s=>'<div class="student"><div class="avatar" style="background:'+s.cor+'">'+s.emoji+'</div><div class="student-info"><b>'+esc(s.nome)+'</b><small>'+esc(s.turma)+'</small></div><span class="tag">'+esc(s.tag)+'</span><span class="go">›</span></div>').join('') : '<p class="empty-state">Nenhum aluno cadastrado.</p>';
+
+      const elMetas=document.getElementById('overviewMetas');
+      if(elMetas){ const top=[...DB.metas].sort((a,b)=>new Date(b.quando)-new Date(a.quando)).slice(0,3);
+        elMetas.innerHTML = top.length? top.map(g=>'<div class="goal"><div class="goal-head"><span>'+esc(g.titulo)+'</span><span style="color:var(--purple)">'+g.progresso+'%</span></div><small>'+esc(nomeAluno(g.alunoId))+' · '+esc(g.categoria)+'</small><div class="progress"><i style="width:'+g.progresso+'%"></i></div></div>').join('') : '<p class="empty-state">Nenhuma meta em andamento.</p>'; }
+
+      const tituloCal=document.getElementById('overviewCalTitulo'); if(tituloCal) tituloCal.textContent=tituloMesAno();
+      renderCalendario('overviewCalendario');
+    }
+
+    function renderTeacherStudents(){
+      preencherSelectTurmas('alunoTurma');
+      const el=document.getElementById('listaAlunos'); if(!el) return;
+      el.innerHTML = DB.students.length ? DB.students.map(s=>'<div class="list-row"><div class="avatar" style="background:'+s.cor+'">'+s.emoji+'</div><div class="grow"><b>'+esc(s.nome)+'</b><small>'+esc(s.turma)+' · Responsável: '+esc(s.responsavel)+'</small></div><span class="'+(s.consentimento?'badge-ok':'badge-warn')+'">'+(s.consentimento?'Consentimento OK':'Consentimento pendente')+'</span><div class="pill-actions"><button class="mini-btn" onclick="registrosParaAluno(\''+s.id+'\')">Registros</button><button class="mini-btn danger" onclick="removerAluno(\''+s.id+'\')">Remover</button></div></div>').join('') : '<p class="empty-state">Nenhum aluno cadastrado ainda.</p>';
+    }
+
+    function renderTeacherPlanner(){
+      const grid=document.getElementById('bibliotecaPlanos');
+      if(grid){
+        grid.innerHTML = Object.keys(planos).filter(k=>k!=='default').map(chave=>{
+          const p=planos[chave];
+          const opcoesAlunos = DB.students.map(s=>'<option value="'+s.id+'">'+esc(s.nome)+'</option>').join('');
+          return '<div class="plano-card" data-chave="'+chave+'">'
+            +'<span class="badge-ok" style="width:fit-content">'+esc(p.condicao)+'</span>'
+            +'<h3>'+esc(p.titulo)+'</h3>'
+            +'<p>'+esc(p.resumo)+'</p>'
+            +'<button class="mini-btn" onclick="this.nextElementSibling.classList.toggle(\'hidden\')">Ver plano completo</button>'
+            +'<div class="plano-detalhes hidden"><b>Atividades em sala</b><ul>'+p.atividadesSala.map(a=>'<li>'+esc(a)+'</li>').join('')+'</ul><b>Atividades para casa</b><ul>'+p.atividadesCasa.map(a=>'<li>'+esc(a)+'</li>').join('')+'</ul></div>'
+            +'<div class="plano-atribuir"><select class="plano-aluno-select">'+opcoesAlunos+'</select><button class="mini-btn on" onclick="atribuirPlanoCard(\''+chave+'\',this)">Atribuir</button></div>'
+            +'</div>';
+        }).join('');
+      }
+      const el=document.getElementById('listaPlanosAtribuidos'); if(!el) return;
+      const lista=[...DB.planosAtribuidos].sort((a,b)=>new Date(b.quando)-new Date(a.quando));
+      el.innerHTML = lista.length ? lista.map(a=>{ const p=planos[a.planoChave];
+        return '<div class="list-row"><div class="grow"><b>'+esc(nomeAluno(a.alunoId))+'</b><small>'+(p?esc(p.condicao)+' · '+esc(p.titulo):'Plano removido')+' · atribuído '+fmtQuando(a.quando)+'</small></div><button class="mini-btn danger" onclick="removerAtribuicao(\''+a.id+'\')">Remover</button></div>';
+      }).join('') : '<p class="empty-state">Nenhum plano atribuído ainda. Escolha um plano acima e atribua a um aluno.</p>';
+    }
+
+    function renderTeacherGoals(){
+      preencherSelectAlunos('metaAluno');
+      const el=document.getElementById('listaMetasProfessor'); if(!el) return;
+      const lista=[...DB.metas].sort((a,b)=>new Date(b.quando)-new Date(a.quando));
+      el.innerHTML = lista.length ? lista.map(g=>'<div class="list-row"><div class="grow"><b>'+esc(g.titulo)+'</b><small>'+esc(nomeAluno(g.alunoId))+' · '+esc(g.categoria)+' · atualizado '+fmtQuando(g.quando)+'</small><div class="progress" style="margin-top:8px"><i style="width:'+g.progresso+'%;background:var(--purple)"></i></div><div class="goal-controls"><button class="mini-btn" onclick="ajustarMeta(\''+g.id+'\',-10)">-10%</button><button class="mini-btn">'+g.progresso+'%</button><button class="mini-btn" onclick="ajustarMeta(\''+g.id+'\',10)">+10%</button><button class="mini-btn on" onclick="ajustarMeta(\''+g.id+'\',100)">Concluir</button><button class="mini-btn danger" onclick="removerMeta(\''+g.id+'\')">Remover</button></div></div></div>').join('') : '<p class="empty-state">Nenhuma meta cadastrada ainda.</p>';
+    }
+
+    function renderTeacherRecords(){
+      preencherSelectAlunos('registroAluno');
+      const el=document.getElementById('listaRegistrosProfessor'); if(!el) return;
+      let lista=[...DB.registros].sort((a,b)=>new Date(b.quando)-new Date(a.quando));
+      if(filtroRegistros) lista=lista.filter(r=>r.alunoId===filtroRegistros);
+      const aviso = filtroRegistros ? '<div class="section-toolbar"><small>Filtrando por '+esc(nomeAluno(filtroRegistros))+' · <a href="#" onclick="filtroRegistros=null;renderAll();return false;" style="color:var(--teal)">limpar filtro</a></small></div>' : '';
+      el.innerHTML = aviso + (lista.length ? lista.map(r=>'<div class="list-row"><div class="mood">'+r.humor+'</div><div class="grow"><b>'+esc(nomeAluno(r.alunoId))+' '+(r.vitoria?'🏅':'')+' · '+fmtQuando(r.quando)+'</b><small>'+esc(r.titulo)+'</small><p style="margin:4px 0 0;color:#66758a;font-size:12px;line-height:1.45">'+esc(r.texto)+'</p></div><button class="mini-btn danger" onclick="removerRegistro(\''+r.id+'\')">Remover</button></div>').join('') : '<p class="empty-state">Nenhum registro encontrado.</p>');
+    }
+
+    function renderTeacherMessages(){
+      preencherSelectAlunos('mensagemAlunoProf');
+      const el=document.getElementById('listaMensagensProf'); if(!el) return;
+      const lista=[...DB.mensagens].sort((a,b)=>new Date(b.quando)-new Date(a.quando));
+      el.innerHTML = lista.length ? lista.map(m=>'<div class="list-row"><div class="grow"><b>'+esc(m.de)+' → '+esc(m.para)+'</b><small>'+esc(nomeAluno(m.alunoId))+' · '+fmtQuando(m.quando)+'</small><p style="margin:4px 0 0;color:#66758a;font-size:12px;line-height:1.45">'+esc(m.texto)+'</p></div></div>').join('') : '<p class="empty-state">Nenhuma mensagem ainda.</p>';
+    }
+
+    function renderParentOverview(){
+      const registros = registrosDe(FAMILY_STUDENT_ID);
+      const elHoje=document.getElementById('parentResumoHoje');
+      if(elHoje){ const r=registros[0]; elHoje.innerHTML = r ? '<div class="record"><div class="mood">'+r.humor+'</div><div><b>'+esc(r.titulo)+'</b><p>'+esc(r.texto)+'</p></div></div>' : '<p class="empty-state">Ainda não há registros.</p>'; }
+      const painelVitoria=document.getElementById('parentVictoryPanel');
+      const vitoria = registros.find(r=>r.vitoria);
+      if(painelVitoria){ if(vitoria){ painelVitoria.classList.remove('hidden'); document.getElementById('parentVictoryText').textContent = vitoria.texto; } else { painelVitoria.classList.add('hidden'); } }
+      const elGoals=document.getElementById('parentGoalsResumo');
+      if(elGoals){ const metas=metasDe(FAMILY_STUDENT_ID).slice(0,2);
+        elGoals.innerHTML = metas.length? metas.map(g=>'<div class="goal"><div class="goal-head"><span>'+esc(g.titulo)+'</span><span style="color:var(--purple)">'+g.progresso+'%</span></div><small>Em andamento · Atualizada '+fmtQuando(g.quando)+'</small><div class="progress"><i style="width:'+g.progresso+'%"></i></div></div>').join('') : '<p class="empty-state">Nenhuma meta cadastrada ainda.</p>'; }
+      const elTl=document.getElementById('parentTimeline');
+      if(elTl){
+        const eventos=[
+          ...registrosDe(FAMILY_STUDENT_ID).map(r=>({titulo:(r.vitoria?'Pequena vitória registrada':'Novo registro de rotina'), texto:fmtQuando(r.quando)+' · Professora Marina', quando:r.quando})),
+          ...metasDe(FAMILY_STUDENT_ID).map(g=>({titulo:'Meta atualizada', texto:fmtQuando(g.quando)+' · '+g.titulo+': '+g.progresso+'%', quando:g.quando})),
+          ...mensagensDe(FAMILY_STUDENT_ID).map(m=>({titulo:'Mensagem de '+m.de, texto:fmtQuando(m.quando), quando:m.quando}))
+        ].sort((a,b)=>new Date(b.quando)-new Date(a.quando)).slice(0,4);
+        elTl.innerHTML = eventos.length? eventos.map(e=>'<div class="event"><b>'+esc(e.titulo)+'</b><p>'+esc(e.texto)+'</p></div>').join('') : '<p class="empty-state">Nenhuma atualização ainda.</p>';
+      }
+    }
+    function renderParentRoutine(){
+      const el=document.getElementById('parentRegistrosCompletos'); if(!el) return;
+      const lista=registrosDe(FAMILY_STUDENT_ID);
+      el.innerHTML = lista.length? lista.map(r=>'<div class="record"><div class="mood">'+r.humor+'</div><div><b>'+esc(r.titulo)+' '+(r.vitoria?'🏅':'')+'</b><p>'+esc(r.texto)+'</p><small style="color:var(--muted)">'+fmtQuando(r.quando)+'</small></div></div>').join('') : '<p class="empty-state">Nenhum registro de rotina ainda.</p>';
+    }
+    function renderParentActivities(){
+      const atribuicoes = planosDe(FAMILY_STUDENT_ID);
+      const montarCard = (a)=>{ const p=planos[a.planoChave]; if(!p) return '';
+        return '<div class="home-activity"><span class="badge-ok">'+esc(p.condicao)+'</span><h3>'+esc(p.titulo)+'</h3><small style="color:var(--muted)">Atribuído '+fmtQuando(a.quando)+' pela professora</small><ul>'+p.atividadesCasa.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div>'; };
+      const resumo=document.getElementById('parentActivitiesResumo');
+      if(resumo) resumo.innerHTML = atribuicoes.length ? atribuicoes.slice(0,1).map(montarCard).join('') + (atribuicoes.length>1?'<small style="color:var(--muted)">+ '+(atribuicoes.length-1)+' outro(s) plano(s) atribuído(s)</small>':'') : '<p class="empty-state">A professora ainda não atribuiu nenhum plano de atividades para casa.</p>';
+      const completa=document.getElementById('parentActivitiesCompletas');
+      if(completa) completa.innerHTML = atribuicoes.length ? atribuicoes.map(montarCard).join('') : '<p class="empty-state">A professora ainda não atribuiu nenhum plano de atividades para casa.</p>';
+    }
+    function renderParentGoals(){
+      const el=document.getElementById('parentMetasCompletas'); if(!el) return;
+      const lista=metasDe(FAMILY_STUDENT_ID);
+      el.innerHTML = lista.length? lista.map(g=>'<div class="goal"><div class="goal-head"><span>'+esc(g.titulo)+'</span><span style="color:var(--purple)">'+g.progresso+'%</span></div><small>'+esc(g.categoria)+' · Atualizada '+fmtQuando(g.quando)+'</small><div class="progress"><i style="width:'+g.progresso+'%"></i></div></div>').join('') : '<p class="empty-state">Nenhuma meta cadastrada ainda.</p>';
+    }
+    function renderParentMessages(){
+      const el=document.getElementById('parentMensagensCompletas'); if(!el) return;
+      const lista=mensagensDe(FAMILY_STUDENT_ID);
+      el.innerHTML = lista.length? lista.map(m=>'<div class="list-row"><div class="grow"><b>'+esc(m.de)+' → '+esc(m.para)+'</b><small>'+fmtQuando(m.quando)+'</small><p style="margin:4px 0 0;color:#66758a;font-size:12px;line-height:1.45">'+esc(m.texto)+'</p></div></div>').join('') : '<p class="empty-state">Nenhuma mensagem ainda.</p>';
+    }
+    function renderParentAgenda(){
+      const el=document.getElementById('parentAgendaLista'); if(!el) return;
+      el.innerHTML = DB.eventos.length ? DB.eventos.map(e=>'<div class="event"><b>'+esc(e.titulo)+'</b><p>'+esc(e.quando)+'</p></div>').join('') : '<p class="empty-state">Nenhum evento na agenda.</p>';
+    }
+
+    function renderSchoolOverview(){
+      const totalAlunos=DB.students.length;
+      const responsaveis=new Set(DB.students.map(s=>s.responsavel)).size;
+      const metasAndamento=DB.metas.filter(g=>g.progresso<100).length;
+      document.getElementById('statAlunos').textContent=totalAlunos;
+      document.getElementById('statResponsaveis').textContent=responsaveis;
+      document.getElementById('statMetas').textContent=metasAndamento;
+
+      const elAt=document.getElementById('schoolAtividade');
+      const atividades=DB.atividades.slice(0,4);
+      elAt.innerHTML = atividades.length? atividades.map(a=>'<div class="record"><div class="mood">'+a.icone+'</div><div><b>'+esc(a.titulo)+'</b><p>'+esc(a.detalhe)+' · '+fmtQuando(a.quando)+'</p></div></div>').join('') : '<p class="empty-state">Nenhuma atividade registrada ainda.</p>';
+
+      const comConsentimento=DB.students.filter(s=>s.consentimento).length;
+      const pctConsent = totalAlunos? Math.round(comConsentimento/totalAlunos*100):0;
+      document.getElementById('pctConsentimento').textContent=pctConsent+'%';
+      document.getElementById('pctConsentimentoBarra').style.width=pctConsent+'%';
+      document.getElementById('pctConsentimentoTexto').textContent=comConsentimento+' dos '+totalAlunos+' alunos com status revisado';
+
+      const totalUsuarios=DB.usuarios.length;
+      const revisados=DB.usuarios.filter(u=>u.revisado).length;
+      const pctRevisado= totalUsuarios? Math.round(revisados/totalUsuarios*100):0;
+      document.getElementById('pctPermissoes').textContent=pctRevisado+'%';
+      document.getElementById('pctPermissoesBarra').style.width=pctRevisado+'%';
+
+      const numEstrategias = Object.keys(planos).length-1;
+      document.getElementById('textoBiblioteca').textContent = 'A biblioteca conta com '+numEstrategias+' planos de aula prontos, organizados por rotina, comunicação, foco, regulação emocional e parceria com a família.';
+    }
+    function renderSchoolUsers(){
+      const el=document.getElementById('listaUsuarios'); if(!el) return;
+      el.innerHTML = DB.usuarios.length ? DB.usuarios.map(u=>'<div class="list-row"><div class="grow"><b>'+esc(u.nome)+'</b><small>'+esc(u.papel)+'</small></div><span class="'+(u.revisado?'badge-ok':'badge-warn')+'">'+(u.revisado?'Revisado':'Pendente')+'</span><div class="pill-actions"><button class="mini-btn" onclick="toggleRevisado(\''+u.id+'\')">'+(u.revisado?'Marcar pendente':'Marcar revisado')+'</button><button class="mini-btn danger" onclick="removerUsuario(\''+u.id+'\')">Remover</button></div></div>').join('') : '<p class="empty-state">Nenhum usuário cadastrado.</p>';
+    }
+    function renderSchoolClasses(){
+      const el=document.getElementById('listaTurmas'); if(!el) return;
+      el.innerHTML = DB.turmas.length? DB.turmas.map(t=>{ const n=DB.students.filter(s=>s.turma===t.nome).length; return '<div class="list-row"><div class="grow"><b>'+esc(t.nome)+'</b><small>'+n+' aluno(s)</small></div><button class="mini-btn danger" onclick="removerTurma(\''+t.id+'\')">Remover</button></div>'; }).join('') : '<p class="empty-state">Nenhuma turma cadastrada.</p>';
+    }
+    function renderSchoolPermissions(){
+      const el=document.getElementById('listaPermissoes'); if(!el) return;
+      el.innerHTML = DB.usuarios.length? DB.usuarios.map(u=>'<div class="list-row"><label class="checkbox-row grow" style="margin-bottom:0"><input type="checkbox" '+(u.revisado?'checked':'')+' onchange="toggleRevisado(\''+u.id+'\')"> <b>'+esc(u.nome)+'</b> — '+esc(u.papel)+'</label></div>').join('') : '<p class="empty-state">Nenhum usuário para revisar.</p>';
+    }
+    function renderSchoolContents(){
+      const el=document.getElementById('listaConteudos'); if(!el) return;
+      el.innerHTML = Object.keys(planos).filter(k=>k!=='default').map(k=>'<div class="list-row"><div class="grow"><b>'+esc(planos[k].condicao)+' · '+esc(planos[k].titulo)+'</b><small>'+esc(planos[k].resumo)+'</small></div></div>').join('');
+    }
+
+    function renderAll(){
+      if(!DB) return;
+      renderTeacherOverview(); renderTeacherStudents(); renderTeacherPlanner(); renderTeacherGoals(); renderTeacherRecords(); renderTeacherMessages();
+      renderParentOverview(); renderParentRoutine(); renderParentActivities(); renderParentGoals(); renderParentMessages(); renderParentAgenda();
+      renderSchoolOverview(); renderSchoolUsers(); renderSchoolClasses(); renderSchoolPermissions(); renderSchoolContents();
+    }
+
+    /* ===================== INICIALIZAÇÃO ===================== */
+    (async function iniciar(){ await carregarDados(); renderAll(); })();
+  </script>
+</body>
+</html>
